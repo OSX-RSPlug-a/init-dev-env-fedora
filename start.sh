@@ -14,10 +14,10 @@ sudo dnf update -y
 sudo yum groupinstall 'Development Tools'
 
 # install packs
-sudo yum install -y curl libxcrypt-compat htop tilix
+sudo yum install -y curl libxcrypt-compat gnome-disk-utility htop tilix snapd
 
 # install packs
-sudo dnf install -y dnf-plugins-core nodejs npm nvm ansible python3-pip poetry podman buildah python3-dnf-plugin-local nfs-utils snapd
+sudo dnf install -y dnf-plugins-core nodejs npm nvm ansible python3-pip poetry podman buildah python3-dnf-plugin-local nfs-utils
 
 # config snap
 sudo ln -s /var/lib/snapd/snap /snap
@@ -26,7 +26,7 @@ sudo ln -s /var/lib/snapd/snap /snap
 pip3 install https://github.com/containers/podman-compose/archive/devel.tar.gz
 
 # add docker repo
-curl https://download.docker.com/linux/fedora/33/x86_64/stable/Packages/docker-ce-20.10.2-3.fc33.x86_64.rpm -o docker-ce.rpm
+curl https://download.docker.com/linux/fedora/34/x86_64/stable/Packages/docker-ce-20.10.2-3.fc34.x86_64.rpm -o docker-ce.rpm
 
 # install docker
 sudo dnf install -y docker-ce.rpm
@@ -56,9 +56,8 @@ eval "$(ssh-agent -s)"
 ssh-add ~/.ssh/id_rsa
 
 # install redhat dnf-core and hashcorp packer
-sudo dnf install -y dnf-plugins-core && \
-    sudo dnf -y config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
-    sudo dnf install -y packer \
+sudo dnf install -y config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo && \
+    sudo dnf install -y packer
 
 
 # k8S install and post config
